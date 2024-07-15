@@ -1,34 +1,54 @@
- import React, { useState } from 'react';
-      const SignUp=({onRouteChange}) =>{
-      const [email, setEmail] = useState('');
-      const [password, setPassword] = useState('');
-      const [name, setName] = useState('');
-      const [username, setUsername] = useState('');
-      const loadUser = () => {};
-      const onSubmitSignUp = (event) => {
-        event.preventDefault();
-        fetch('http://localhost:3000/SignUp', {
-          method: 'post',
+ import React from 'react';
+ class Signup extends React.Component {
+  constructor(props){
+    super(props);
+    this.state = {
+      email:'',
+      password:'',
+      name:'',
+      username:'',
+    }
+  }
+  
+  onNameChange = (event)=>{
+    this.setState({name: event.target.value})
+  }
+  onEmailChange = (event)=>{
+    this.setState({email: event.target.value})
+  }
+ onPasswordChange = (event)=>{
+    this.setState({password: event.target.value})
+  }
+  onUsernameChange = (event)=>{
+    this.setState({username: event.target.value})
+  }
+      onSubmitSignIn = ()=>{
+        fetch('http://localhost:3000/register', {
+          method: 'POST',
           headers: {'Content-Type': 'application/json'},
           body: JSON.stringify({
-            email: email, 
-            password:password,
-            name: name,
-            username:username
+            email: this.state.email,
+            password: this.state.password,
+            name: this.state.name,
           })
         })
-          .then(respone => respone.json())
-        .then(user =>{
-          if (user){
-            loadUser(user)
-           onRouteChange ('home')
+        .then(response => response.json()) 
+          .then(user => {
+    
+    
+          if (user.id) {
+            this.props.loadUser(user)
+            this.props.onRouteChange('home');
+    
           }
         })
-    }
+      }
+      render(){
+        const { onRouteChange } = this.props;
         return(
             <article className="br3 ba dark-gray b--black-10 mv4 w-100 w-50-m w-25-l mw6 shadow-5 center">
             <main className="pa4 black-80">
-            <form className="measure" onSubmit={onSubmitSignUp}>
+            <form className="measure" onSubmit={this.onSubmitSignUp}>
             <div className="measure">
             <fieldset
               id="sign_up"
@@ -49,7 +69,7 @@
               type="text"
               name="name"
               id="name"
-              onChange={(e) => setName(e.target.value)}
+              onChange={this.onNameChange}
               autoComplete="name" required
             />
             </div>
@@ -65,7 +85,7 @@
             type="username, button"
             name="username"
             id="username"
-            onChange={(e) => setUsername(e.target.value)}
+            onChange={this.onUsernameChange}
             autoComplete="username" 
           />
             </div>
@@ -81,7 +101,7 @@
             type="email, button"
             name="email-address"
             id="email-address"
-            onChange={(e) => setEmail(e.target.value)}
+            onChange={this.onEmailChange}
             autoComplete="email" required
           />
             </div>
@@ -97,14 +117,14 @@
             type="password"
             name="password"
             id="password"
-            onChange={(e) => setPassword(e.target.value)}
+            onChange={this.onPasswordChange}
             autoComplete="current-password" required
           />
             </div>
             </fieldset>
             <div className="">
             <input
-           //onClick={onSubmitSignUp}
+              onClick={this.onSubmitSignIn}
               className="b ph3 pv2 input-reset ba b--black bg-transparent grow pointer f6 dib"
               type="submit"
               value="Sign Up"
@@ -123,5 +143,6 @@
             </main>
           </article>
         )
-    }
-export default SignUp;
+      }
+    };
+export default Signup;

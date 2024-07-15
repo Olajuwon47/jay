@@ -1,6 +1,6 @@
 import React, {} from 'react';
-import './Imagelinkform.css';
-    const Imagelinkform =({OnInputChange,onButtonSubmit }) =>{
+import './ImageLinkForm.css';
+    const ImageLinkForm =({OnInputChange,onButtonSubmit }) =>{
         return(
           <div>
             <p className='f3'>
@@ -16,4 +16,6 @@ import './Imagelinkform.css';
         );
     }
 
-export default Imagelinkform;
+export default ImageLinkForm;
+
+

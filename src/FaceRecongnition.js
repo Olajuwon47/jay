@@ -1,6 +1,6 @@
 import React from 'react';
-import './FaceRecongintion.css';
-    const FaceRecongintion =({ imageUrl, box }) =>{
+import './FaceRecongnition.css';
+    const FaceRecongnition =({ imageUrl, box }) =>{
         return(
           <div className='center ma' >
             <div className='absolute mt2' >
@@ -13,4 +13,7 @@ import './FaceRecongintion.css';
         );
     }
 
-export default FaceRecongintion;
+export default FaceRecongnition;
+
+
+
