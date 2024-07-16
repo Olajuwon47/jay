@@ -12,27 +12,28 @@ import Rank from "./components/Rank.js";
 import "./App.css";
 //You must add your own API key here from Clarifai.
 /*const app = new Clarifai.App({
- apiKey: 'YOUR API KEY HERE'
+ apiKey: '8a56ebb4735c41ee860174ba7261ebc4'
 });*/
+const initialState = {
 
+ input: '',
+      imageUrl: '',
+      box: {},
+      route: 'signing',
+      isAssignedIn: false,
+      user: {
+        id:'',
+        name:'',
+        // password:'',
+        email:'',
+        entries:0,
+        joined: '',
+}
+}
 class App extends Component {
   constructor() {
     super();
-    this.state = {
-      input: '',
-      imageUrl: '',
-      box: {},
-      route: 'signin',
-      isSignedIn: false,
-      user: {
-        id: '',
-        name: '',
-        email: '',
-        entries: 0,
-        joined: ''
-      },
-      init: false
-    };
+    this.state = initialState;
   }
 
   loadUser = (data) => {
@@ -206,7 +207,7 @@ class App extends Component {
         .then(result => {
         if (result) {
         fetch('http://localhost:3000/image',{
-          method: 'PUT',
+          method: 'put',
           headers: {'Content-Type': 'application/json'},
           body: JSON.stringify({
             id: this.state.user.id
@@ -255,7 +256,7 @@ class App extends Component {
 
   onRouteChange = (route) => {
     if (route === 'signout') {
-      this.setState({isSignedIn: false})
+      this.setState(initialState)
     } else if (route === 'home') {
       this.setState({isSignedIn: true})
     }
