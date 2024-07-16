@@ -1,4 +1,4 @@
-import React, {useEffect, useMemo, useState } from 'react';
+/*import React, {useEffect, useMemo, useState } from 'react';
 import Navigation from "./components/Navigation.js";
 import Logo from "./components/Logo.js";
 import Imagelinkform from "./components/ImageLinkForm.js";
@@ -31,7 +31,7 @@ const [isSignedIn, setIsSignedIn] = useState(false);
       .then(response => response.json())
       .then(console.log)
     
-    }; */
+    }; 
  useEffect(()=> {
   fetch('http://localhost:3000')
   .then(response => response.json())
@@ -93,7 +93,7 @@ const calculateFaceLocation=(data) => {
     this.setState({isSignedIn: false})
   } else if (route === 'home') {
     this.setState({isSignedIn: true})
-  }*/
+  }*
   if (newRoute === 'signout') {
     setIsSignedIn(false);
     setRoute('signin');
@@ -282,4 +282,4 @@ const onButtonSubmit= () => {
  </div>
   );
 };
-export default App;
+export default App;*/
