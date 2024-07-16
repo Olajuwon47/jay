@@ -8,12 +8,12 @@ import Signup from "./components/Signup.js";
 import Rank from "./components/Rank.js";
 //import Particles, { initParticlesEngine } from "@tsparticles/react"; 
 //import { loadSlim } from "@tsparticles/slim";
-import Clarifai  from "clarifai";
+//import Clarifai  from "clarifai";
 import "./App.css";
 //You must add your own API key here from Clarifai.
-const app = new Clarifai.App({
+/*const app = new Clarifai.App({
  apiKey: '8a56ebb4735c41ee860174ba7261ebc4'
-});
+});*/
 const initialState = {
 
  input: '',
