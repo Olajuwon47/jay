@@ -11,9 +11,9 @@ import Rank from "./components/Rank.js";
 //import Clarifai  from "clarifai";
 import "./App.css";
 //You must add your own API key here from Clarifai.
-/*const app = new Clarifai.App({
+const app = new Clarifai.App({
  apiKey: '8a56ebb4735c41ee860174ba7261ebc4'
-});*/
+});
 const initialState = {
 
  input: '',
