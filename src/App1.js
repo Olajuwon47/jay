@@ -41,7 +41,7 @@ const [isSignedIn, setIsSignedIn] = useState(false);
 const returnClarifaiRequestOptions =(imageUrl) =>{
  const USER_ID = 'olajuwon';
 // Your PAT (Personal Access Token) can be found in the Account's Security section
-const PAT = '8a56ebb4735c41ee860174ba7261ebc4';
+const PAT = '';
 const APP_ID = 'face-detection';
 // Change this to whatever image input you want to add
 const IMAGE_URL = imageUrl; 
