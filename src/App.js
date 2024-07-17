@@ -8,12 +8,9 @@ import Signup from "./components/Signup.js";
 import Rank from "./components/Rank.js";
 //import Particles, { initParticlesEngine } from "@tsparticles/react"; 
 //import { loadSlim } from "@tsparticles/slim";
-//import Clarifai  from "clarifai";
 import "./App.css";
 //You must add your own API key here from Clarifai.
-/*const app = new Clarifai.App({
- apiKey: '8a56ebb4735c41ee860174ba7261ebc4'
-});*/
+/**/
 const initialState = {
 
  input: '',
@@ -177,12 +174,12 @@ class App extends Component {
   onInputChange = (event) => {
     this.setState({input: event.target.value});
   }
-  onButtonSubmit = ()=>{
+  /*onButtonSubmit = ()=>{
     this.setState({imageUrl:this.state.input});
     const raw = JSON.stringify({
       user_app_id : {
-       user_id: "olajuwon",
-       app_id: "face-detection",
+       user_id: "",
+       app_id: "",
       },
       inputs:[
       {
@@ -198,7 +195,7 @@ class App extends Component {
     method: 'POST',
     headers: {
         'Accept': 'application/json',
-        'Authorization': 'Key 8a56ebb4735c41ee860174ba7261ebc4 ' 
+        'Authorization': 'Key' 
     },
     body: raw
 };
@@ -223,18 +220,23 @@ class App extends Component {
     .catch(console.log)
     .catch(err=>console.log("oops", err));
 
-  };
-  /*onButtonSubmit = () => {
+  };*/
+  onButtonSubmit = () => {
     this.setState({imageUrl: this.state.input});
-   
     // HEADS UP! Sometimes the Clarifai Models can be down or not working as they are constantly getting updated.
     // A good way to check if the model you are using is up, is to check them on the clarifai website. For example,
     // for the Face Detect Mode: https://www.clarifai.com/models/face-detection
     // If that isn't working, then that means you will have to wait until their servers are back up. 
-
-    app.models.predict('face-detection', this.state.input)
+    fetch('http://localhost:3000/imageurl', {
+      method: 'post',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify({
+        input : this.state.input
+      })
+    })
+    .then(response => response.json())
       .then(response => {
-        console.log('hi', response)
+        //console.log('hi', response)
         if (response) {
           fetch('http://localhost:3000/image', {
             method: 'put',
@@ -252,7 +254,7 @@ class App extends Component {
         this.displayFaceBox(this.calculateFaceLocation(response))
       })
       .catch(err => console.log(err));
-  }*/
+  }
 
   onRouteChange = (route) => {
     if (route === 'signout') {

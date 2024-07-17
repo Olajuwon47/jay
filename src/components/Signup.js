@@ -34,17 +34,14 @@
         })
         .then(response => response.json()) 
           .then(user => {
-    
-    
-          if (user.id) {
+          if (user) {
             this.props.loadUser(user)
             this.props.onRouteChange('home');
-    
           }
         })
       }
       render(){
-        const { onRouteChange } = this.props;
+       // const { onRouteChange } = this.props;
         return(
             <article className="br3 ba dark-gray b--black-10 mv4 w-100 w-50-m w-25-l mw6 shadow-5 center">
             <main className="pa4 black-80">
@@ -130,14 +127,14 @@
               value="Sign Up"
             />
       </div>
-            <div className="lh-copy mt3">
+            {/*<div className="lh-copy mt3">
             <p
               onClick={() => onRouteChange('Signin')}
               className="f6 link dim black db pointer "
             >
             signIn
             </p>
-      </div>
+      </div>*/}
             </div>
             </form>
             </main>
