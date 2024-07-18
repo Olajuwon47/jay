@@ -227,7 +227,7 @@ class App extends Component {
     // A good way to check if the model you are using is up, is to check them on the clarifai website. For example,
     // for the Face Detect Mode: https://www.clarifai.com/models/face-detection
     // If that isn't working, then that means you will have to wait until their servers are back up. 
-    fetch('http://localhost:3000/imageurl', {
+    fetch('https://backend-server-bppy.onrender.com/imageurl', {
       method: 'post',
       headers: {'Content-Type': 'application/json'},
       body: JSON.stringify({
@@ -238,7 +238,7 @@ class App extends Component {
       .then(response => {
         //console.log('hi', response)
         if (response) {
-          fetch('http://localhost:3000/image', {
+          fetch('https://backend-server-bppy.onrender.com/image', {
             method: 'put',
             headers: {'Content-Type': 'application/json'},
             body: JSON.stringify({

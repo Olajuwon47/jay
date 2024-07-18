@@ -23,7 +23,7 @@
     this.setState({username: event.target.value})
   }
       onSubmitSignIn = ()=>{
-        fetch('http://localhost:3000/register', {
+        fetch('https://backend-server-bppy.onrender.com/signup', {
           method: 'POST',
           headers: {'Content-Type': 'application/json'},
           body: JSON.stringify({
