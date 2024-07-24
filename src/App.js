@@ -23,7 +23,7 @@ import "./App.css";
   });
 const [isSignedIn, setIsSignedIn] = useState(false);
  useEffect(()=> {
-  fetch('http://localhost:3000')
+  fetch('https://backend-server-bppy.onrender.com')
   .then(response => response.json())
   .then(console.log);
 
